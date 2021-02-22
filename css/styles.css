@@ -72,17 +72,27 @@ button:hover {
       margin: 35px;
       width: 70px; }
   .select__paper {
-    border: 20px solid #5671f5;
-    box-shadow: 0 10px #4865f4, inset 0 10px #dbdbdb;
     grid-area: paper; }
   .select__scissors {
-    border: 20px solid #eca922;
-    box-shadow: 0 10px #ec9e0e, inset 0 10px #dbdbdb;
     grid-area: scissors; }
   .select__rock {
-    border: 20px solid #dd405d;
-    box-shadow: 0 10px #dc2e4e, inset 0 10px #dbdbdb;
     grid-area: rock; }
+
+.paper-style {
+  border: 20px solid #5671f5;
+  box-shadow: 0 10px #4865f4, inset 0 10px #dbdbdb; }
+
+.rock-style {
+  border: 20px solid #dd405d;
+  box-shadow: 0 10px #dc2e4e, inset 0 10px #dbdbdb; }
+
+.scissors-style {
+  border: 20px solid #eca922;
+  box-shadow: 0 10px #ec9e0e, inset 0 10px #dbdbdb; }
+
+.gray-style {
+  background: #dbdbdb;
+  border: 20px solid #dbdbdb; }
 
 .result {
   display: none;
@@ -93,7 +103,6 @@ button:hover {
   .result__player, .result__pc {
     align-self: center;
     border-radius: 100%;
-    border: 25px solid #dbdbdb;
     height: 200px;
     justify-self: center;
     position: relative; }

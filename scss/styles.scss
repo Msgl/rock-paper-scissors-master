@@ -88,24 +88,37 @@ button:hover {
         }
 
         &__paper {
-            border: 20px solid $paper-gradient-light;
-            box-shadow: 0 10px  $paper-gradient-dark, inset 0 10px $grey;
             grid-area: paper;
         }
 
         &__scissors {
-            border: 20px solid $scissors-gradient-light;
-            box-shadow: 0 10px  $scissors-gradient-dark, inset 0 10px $grey;
             grid-area: scissors;
         }
 
         &__rock {
-            border: 20px solid $rock-gradient-light;
-            box-shadow: 0 10px  $rock-gradient-dark, inset 0 10px $grey;
             grid-area: rock;
         }
 }
 
+.paper-style {
+    border: 20px solid $paper-gradient-light;
+    box-shadow: 0 10px  $paper-gradient-dark, inset 0 10px $grey;
+}
+
+.rock-style {
+    border: 20px solid $rock-gradient-light;
+    box-shadow: 0 10px  $rock-gradient-dark, inset 0 10px $grey;
+}
+
+.scissors-style {
+    border: 20px solid $scissors-gradient-light;
+    box-shadow: 0 10px  $scissors-gradient-dark, inset 0 10px $grey;
+}
+
+.gray-style {
+    background: $grey;
+    border: 20px solid $grey;
+}
 
 .result {
     display: none;
@@ -118,7 +131,6 @@ button:hover {
         &__player, &__pc{
             align-self: center;
             border-radius: 100%;
-            border: 25px solid $grey;
             height: 200px;
             justify-self: center;
             position: relative;

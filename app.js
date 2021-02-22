@@ -9,8 +9,22 @@ const message = document.querySelector('.result__message');
 
 // The player's 3 options (rock, paper, scissors) - can be clicked
 const playerRock = document.querySelector('.rock');
+const rockSrc = playerRock.src;
+playerRock.name = "Rock"; //The name should be the same as the name property of the theImage array
+playerRock.index = 0;
+
+
 const playerPaper = document.querySelector('.paper');
+const paperSrc = playerPaper.src;
+playerPaper.name = "Paper"; //The name should be the same as the name property of the theImage array
+playerPaper.index = 1;
+
+
 const playerScissors = document.querySelector('.scissors');
+const scissorsSrc = playerScissors.src;
+playerScissors.name = "Scissors"; //The name should be the same as the name property of the theImage array
+playerScissors.index = 2;
+
 
 // The divs of our results
 const resultPlayerDiv = document.querySelector('.result__player');
@@ -30,41 +44,38 @@ let text; //we will use it to display a message (draw - loose - win)
 
 // 
 const theImages = [{
-    src: "/images/icon-rock.svg",
-    border: "20px solid hsl(349, 70%, 56%)",
-    shadow: "0 10px  hsl(349, 71%, 52%), inset 0 10px rgb(219, 219, 219)",
+    src: rockSrc,
     name: "Rock"
 }, {
-    src: "/images/icon-paper.svg",
-    border: "20px solid hsl(230, 89%, 65%)",
-    shadow: "0 10px  hsl(230, 89%, 62%), inset 0 10px rgb(219, 219, 219)",
+    src: paperSrc,
     name: "Paper"
 }, {
-    src: "/images/icon-scissors.svg",
-    border: "20px solid hsl(40, 84%, 53%)",
-    shadow: "0 10px  hsl(39, 89%, 49%), inset 0 10px rgb(219, 219, 219)",
+    src: scissorsSrc,
     name: "Scissors"
 }];
 
 //Set EventListeners, number/name properties for the player's choice
 playerRock.addEventListener('click', playGame);
-playerRock.name = "Rock"; //The name should be the same as the name property of the theImage array
-playerRock.index = 0;
-
 playerPaper.addEventListener('click', playGame);
-playerPaper.name = "Paper"; //The name should be the same as the name property of the theImage array
-playerPaper.index = 1;
-
 playerScissors.addEventListener('click', playGame);
-playerScissors.name = "Scissors"; //The name should be the same as the name property of the theImage array
-playerScissors.index = 2;
+
 
 // playGame function - game logic
 function playGame() {
-    resultPlayerImage.setAttribute("src", this.src); // Display Player's choice
-    resultPlayerDiv.style.border = theImages[this.index].border; //Change border color based on player's choice
-    resultPlayerDiv.style.boxShadow = theImages[this.index].shadow; //Change shadows based on player's choice
-    
+    resultPlayerImage.setAttribute("src", this.src); // Set image - Player's choice
+
+    resultPlayerDiv.style.border = ""; //Remove inline style - Player's choice
+    resultPlayerDiv.style.boxShadow = ""; //Remove inline style - Player's choice
+
+    // Set style - Player's choice
+    if(this.name == "Rock"){
+        resultPlayerDiv.classList.add("rock-style");
+    } else if (this.name == "Paper") {
+        resultPlayerDiv.classList.add("paper-style");
+    } else if (this.name == "Scissors"){
+        resultPlayerDiv.classList.add("scissors-style");
+    }
+
     resetResults(); 
 
     // Calculate random pc choice
@@ -84,9 +95,10 @@ function resetResults() {
     resultPcImage.style.visibility = "hidden"; //we hide it so that the previous result does not show
 
     // Initial color for resultPcDiv is grey (before the choice of the pc is shown)
-    resultPcDiv.style.background = "rgb(219, 219, 219)"; //set to grey 
-    resultPcDiv.style.border = "20px solid rgb(219, 219, 219)"; //set to grey 
-    resultPcDiv.style.boxShadow = ""; //remove box shadow 
+    resultPcDiv.style.background = ""; //remove inline style
+    resultPcDiv.style.border = ""; //remove inline style
+    resultPcDiv.style.boxShadow = ""; //remove inline style
+    resultPcDiv.classList.add('gray-style'); //set it to gray
 
     message.innerHTML = ""; //we clear the message
 }
@@ -111,8 +123,6 @@ function calculateWinner(player, pc){
 
 
 
-
-
 function displayResults(a,b,c){
     // if (a == true){
     //     resultPcDiv.classList.add("winner-animation");
@@ -126,21 +136,35 @@ function displayResults(a,b,c){
         resultPcImage.style.visibility = "visible";
         resultPcImage.src = theImages[c].src;
         resultPcDiv.style.background = "white"; //set color to white
-        resultPcDiv.style.border = theImages[c].border; //Change border color based on pc's choice
-        resultPcDiv.style.boxShadow = theImages[c].shadow; //Change shadows based on pc's choice
+        resultPcDiv.classList.remove('gray-style');
 
-
+        if(theImages[c].name == "Rock"){
+            resultPcDiv.classList.add("rock-style");
+        } else if (theImages[c].name == "Paper") {
+            resultPcDiv.classList.add("paper-style");
+        } else if (theImages[c].name == "Scissors"){
+            resultPcDiv.classList.add("scissors-style");
+            console.log("name is sc")
+        }
 
         score.innerHTML = calculateScore;
         message.innerHTML = text;
-        },600);
+        },3000);
 
     selectContainer.style.display = "none";
 }
 
 
 function playAgain() {
+    // Remove all the styles - PC choice
+    resultPcDiv.classList.remove('gray-style');
+    resultPcDiv.classList.remove("rock-style");
+    resultPcDiv.classList.remove("paper-style");
+    resultPcDiv.classList.remove("scissors-style");
+
     resultContainer.style.display = "none"; //we remove the div with the results of the previous match
     selectContainer.style.display = "grid"; //we go back to the div with the game
+
+
 }
 
