@@ -216,11 +216,11 @@ button:hover {
 .box__rules {
     background: $white;
     border-radius: 10px;
-    display: none;
+    display: none; //change to none
     margin: 0 auto;
     padding: 25px;
     position: relative;
-    top: -50%;
+    top: -70%;
     width: fit-content;
 
     &__title{
@@ -240,6 +240,14 @@ button:hover {
         }
     }
 
+}
+
+.active {
+    display: block;
+}
+
+.darken {
+    filter: brightness(50%);
 }
 
 @media only screen and (max-width: 1000px) {

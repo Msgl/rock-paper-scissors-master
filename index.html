@@ -12,73 +12,59 @@
 
 <body>
 
-<div class="header">
-  <div class="header__text">
-    <p>Rock</p>
-    <p>Paper</p>
-    <p>Scissors</p>
-  </div>
-  <div class="header__score">
-    <p id="header__score__title">Score</p>
-    <p id="header__score__count">0</p>
-  </div>
-</div>
-
-
-
-
-<div class="select">
-  <div class="select__paper">
-    <img class="paper" src="/images/icon-paper.svg" alt="paper">
-  </div>
-
-  <div class="select__scissors">
-    <img class="scissors" src="/images/icon-scissors.svg" alt="scissors">
-  </div>
-
-  <div class="select__rock">
-    <img class="rock" src="/images/icon-rock.svg" alt="rock">
-  </div>
-</div>
-
-
-<div class="result">
-    <div class="result__player">
-      <img class="result__player__image" src="/images/icon-paper.svg" alt="player image selection">
+<div class="wrapper">
+  <div class="header">
+    <div class="header__text">
+      <p>Rock</p>
+      <p>Paper</p>
+      <p>Scissors</p>
     </div>
-    
-
-    <div class="result__box">
-      <p class="result__message"></p>
-      <button class="result__box__btn" onclick="playAgain()">Play Again</button>
+    <div class="header__score">
+      <p id="header__score__title">Score</p>
+      <p id="header__score__count">0</p>
     </div>
-    
-    <div class="result__pc">
-      <img class="result__pc__image">
+  </div>
+  
+  <div class="select">
+    <div class="select__paper">
+      <img class="paper" src="/images/icon-paper.svg" alt="paper">
     </div>
-      
-
+  
+    <div class="select__scissors">
+      <img class="scissors" src="/images/icon-scissors.svg" alt="scissors">
+    </div>
+  
+    <div class="select__rock">
+      <img class="rock" src="/images/icon-rock.svg" alt="rock">
+    </div>
+  </div>
+  
+  <div class="result">
+      <div class="result__player">
+        <img class="result__player__image" src="/images/icon-paper.svg" alt="player image selection">
+      </div>
+      <div class="result__box">
+        <p class="result__message"></p>
+        <button class="result__box__btn" onclick="playAgain()">Play Again</button>
+      </div>
+      <div class="result__pc">
+        <img class="result__pc__image">
+      </div>
+  </div>
+  
+  <div class="rules">
+    <button class="rules__button" onclick="openRules()">Rules</button>
+  </div>
 </div>
-
-<div class="rules">
-  <button class="rules__button" onclick="openRules()">Rules</button>
-</div>
-
 
 
   <div class="box__rules" >
-    
     <div class="box__rules__title">
       <p>Rules</p>
       <p class="box__rules__title-btn" onclick="closeRules()">x</p>
     </div>
     <img  class="box__rules__image"  src="/images/image-rules.svg" alt="Rules of the game"> 
   </div>
-  
-
-
-
-
 
 <script src="app.js"></script>
 <script src="rules.js"></script>
