@@ -1,0 +1,31 @@
+{
+  "name": "rock-paper-scissors-master",
+  "version": "1.0.0",
+  "description": "![Design preview for the Rock, Paper, Scissors coding challenge](./design/desktop-preview.jpg)",
+  "main": "index.html",
+  "scripts": {
+    "start": "npm run watch:all",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lite": "lite-server",
+    "scss": "node-sass --watch scss -o css",
+    "watch:all": "parallelshell \"npm run scss\" \"npm run lite\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Msgl/rock-paper-scissors-master.git"
+  },
+  "keywords": [
+    "Game"
+  ],
+  "author": "Maria Glynou",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Msgl/rock-paper-scissors-master/issues"
+  },
+  "homepage": "https://github.com/Msgl/rock-paper-scissors-master#readme",
+  "devDependencies": {
+    "lite-server": "^2.6.1",
+    "node-sass": "^5.0.0",
+    "parallelshell": "^3.0.1"
+  }
+}
