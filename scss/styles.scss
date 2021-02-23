@@ -27,7 +27,7 @@ button:hover {
 
     &__text {
         color: $white;
-        font-size: 36px;
+        font-size: 2.25em;
         line-height: 80%;
         text-transform: uppercase;
     }
@@ -43,7 +43,7 @@ button:hover {
 
         #header__score__title {
             color: $score-text;
-            font-size: 1.1em;
+            font-size: 1.2em;
             letter-spacing: 0.1em;
             text-transform: uppercase;
         }
@@ -100,26 +100,6 @@ button:hover {
         }
 }
 
-.paper-style {
-    border: 20px solid $paper-gradient-light;
-    box-shadow: 0 10px  $paper-gradient-dark, inset 0 10px $grey;
-}
-
-.rock-style {
-    border: 20px solid $rock-gradient-light;
-    box-shadow: 0 10px  $rock-gradient-dark, inset 0 10px $grey;
-}
-
-.scissors-style {
-    border: 20px solid $scissors-gradient-light;
-    box-shadow: 0 10px  $scissors-gradient-dark, inset 0 10px $grey;
-}
-
-.gray-style {
-    background: $grey;
-    border: 20px solid $grey;
-}
-
 .result {
     display: none;
     grid-template-areas:
@@ -148,7 +128,7 @@ button:hover {
 
         &__player::before, &__pc::before {
             color: $white;
-            font-size: 25px;
+            font-size: 1.6em;
             font-weight: $bold-weight;
             position: absolute;
             top:-80px;
@@ -183,7 +163,7 @@ button:hover {
                 border-radius: 10px;
                 border: 1px solid $white;
                 font-family: $main-font;
-                font-size: 20px;
+                font-size: 1.25em;
                 letter-spacing: .2em;
                 padding: 20px;
                 text-transform: uppercase;
@@ -191,7 +171,7 @@ button:hover {
             }
 
             > p {
-                font-size: 46px;
+                font-size: 2.8em;
                 margin: 20px;
                 text-align: center;
             }
@@ -262,6 +242,46 @@ button:hover {
     filter: brightness(50%);
 }
 
+.paper-style {
+    border: 20px solid $paper-gradient-light;
+    box-shadow: 0 10px  $paper-gradient-dark, inset 0 10px $grey;
+}
+
+.rock-style {
+    border: 20px solid $rock-gradient-light;
+    box-shadow: 0 10px  $rock-gradient-dark, inset 0 10px $grey;
+}
+
+.scissors-style {
+    border: 20px solid $scissors-gradient-light;
+    box-shadow: 0 10px  $scissors-gradient-dark, inset 0 10px $grey;
+}
+
+.gray-style {
+    background: $grey;
+    border: 20px solid $grey;
+}
+
+.win{
+    position: relative;
+    transition: box-shadow 3s ease;
+    z-index: -1;
+}
+
+.rock-style.win {
+    box-shadow:0 10px $rock-gradient-dark, inset 0 10px $grey, 0 0 0 40px $win-gradient-1, 0 0 0 80px $win-gradient-2,0 0 0 120px $win-gradient-3,0 0 0 160px $win-gradient-4;
+}
+
+.paper-style.win {
+    box-shadow:0 10px  $paper-gradient-dark, inset 0 10px $grey, 0 0 0 40px $win-gradient-1, 0 0 0 80px $win-gradient-2,0 0 0 120px $win-gradient-3,0 0 0 160px $win-gradient-4;
+}
+
+.scissors-style.win {
+    box-shadow:0 10px  $scissors-gradient-dark, inset 0 10px $grey, 0 0 0 40px $win-gradient-1, 0 0 0 80px $win-gradient-2,0 0 0 120px $win-gradient-3,0 0 0 160px $win-gradient-4;
+}
+
+
+
 @media only screen and (max-width: 1000px) {
     .header {
         width: 450px;
@@ -288,7 +308,7 @@ button:hover {
             &__btn {
                 border-radius: 10px;
                 font-family: $main-font;
-                font-size: 20px;
+                font-size: 1.25em;
                 letter-spacing: .2em;
                 margin: auto;
                 padding: 20px;

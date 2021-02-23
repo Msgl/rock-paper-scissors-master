@@ -27,7 +27,7 @@ button:hover {
   width: 750px; }
   .header__text {
     color: white;
-    font-size: 36px;
+    font-size: 2.25em;
     line-height: 80%;
     text-transform: uppercase; }
   .header__score {
@@ -40,7 +40,7 @@ button:hover {
     width: 120px; }
     .header__score #header__score__title {
       color: #2a46c0;
-      font-size: 1.1em;
+      font-size: 1.2em;
       letter-spacing: 0.1em;
       text-transform: uppercase; }
     .header__score #header__score__count {
@@ -78,22 +78,6 @@ button:hover {
   .select__rock {
     grid-area: rock; }
 
-.paper-style {
-  border: 20px solid #5671f5;
-  box-shadow: 0 10px #4865f4, inset 0 10px #dbdbdb; }
-
-.rock-style {
-  border: 20px solid #dd405d;
-  box-shadow: 0 10px #dc2e4e, inset 0 10px #dbdbdb; }
-
-.scissors-style {
-  border: 20px solid #eca922;
-  box-shadow: 0 10px #ec9e0e, inset 0 10px #dbdbdb; }
-
-.gray-style {
-  background: #dbdbdb;
-  border: 20px solid #dbdbdb; }
-
 .result {
   display: none;
   grid-template-areas: "player box pc";
@@ -114,7 +98,7 @@ button:hover {
     grid-area: player; }
   .result__player::before, .result__pc::before {
     color: white;
-    font-size: 25px;
+    font-size: 1.6em;
     font-weight: 600;
     position: absolute;
     top: -80px;
@@ -140,13 +124,13 @@ button:hover {
       border-radius: 10px;
       border: 1px solid white;
       font-family: "Barlow Semi Condensed", sans-serif;
-      font-size: 20px;
+      font-size: 1.25em;
       letter-spacing: .2em;
       padding: 20px;
       text-transform: uppercase;
       width: 300px; }
     .result__box > p {
-      font-size: 46px;
+      font-size: 2.8em;
       margin: 20px;
       text-align: center; }
   .result__message {
@@ -201,6 +185,36 @@ button:hover {
 .darken {
   filter: brightness(50%); }
 
+.paper-style {
+  border: 20px solid #5671f5;
+  box-shadow: 0 10px #4865f4, inset 0 10px #dbdbdb; }
+
+.rock-style {
+  border: 20px solid #dd405d;
+  box-shadow: 0 10px #dc2e4e, inset 0 10px #dbdbdb; }
+
+.scissors-style {
+  border: 20px solid #eca922;
+  box-shadow: 0 10px #ec9e0e, inset 0 10px #dbdbdb; }
+
+.gray-style {
+  background: #dbdbdb;
+  border: 20px solid #dbdbdb; }
+
+.win {
+  position: relative;
+  transition: box-shadow 3s ease;
+  z-index: -1; }
+
+.rock-style.win {
+  box-shadow: 0 10px #dc2e4e, inset 0 10px #dbdbdb, 0 0 0 40px #3b4363, 0 0 0 80px #2f3756, 0 0 0 120px #293257, 0 0 0 160px #212950; }
+
+.paper-style.win {
+  box-shadow: 0 10px #4865f4, inset 0 10px #dbdbdb, 0 0 0 40px #3b4363, 0 0 0 80px #2f3756, 0 0 0 120px #293257, 0 0 0 160px #212950; }
+
+.scissors-style.win {
+  box-shadow: 0 10px #ec9e0e, inset 0 10px #dbdbdb, 0 0 0 40px #3b4363, 0 0 0 80px #2f3756, 0 0 0 120px #293257, 0 0 0 160px #212950; }
+
 @media only screen and (max-width: 1000px) {
   .header {
     width: 450px; }
@@ -217,7 +231,7 @@ button:hover {
       .result__box__btn {
         border-radius: 10px;
         font-family: "Barlow Semi Condensed", sans-serif;
-        font-size: 20px;
+        font-size: 1.25em;
         letter-spacing: .2em;
         margin: auto;
         padding: 20px;

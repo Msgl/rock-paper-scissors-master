@@ -3,30 +3,32 @@
 const selectContainer = document.querySelector(".select");
 const resultContainer = document.querySelector(".result");
 
-//
+// Display the results (score and message)
 const score = document.querySelector('#header__score__count');
+let calculateScore = 0; //we will use it to calculate the score
 const message = document.querySelector('.result__message');
+let text =""; //we will use it to display a message (draw - loose - win)
 
 // The divs of our results
 const resultPlayerDiv = document.querySelector('.result__player');
 const resultPcDiv = document.querySelector('.result__pc');
 
-// Our results - we will display the choice of the player and the randomly generated choice for the pc here
+// Our results - we will display the choice of the player and the randomly generated choice for the pc
 const resultPlayerImage = document.querySelector(".result__player__image");
 const resultPcImage = document.querySelector(".result__pc__image");
 
-// Our buttons
-const againBtn = document.querySelector('.result__box__btn'); //Play again button
-
-// Other
-let calculateScore = 0; //we will use it to calculate the score
-let text =""; //we will use it to display a message (draw - loose - win)
+// Play again button
+const againBtn = document.querySelector('.result__box__btn'); 
 
 // The player's 3 options (rock, paper, scissors) - can be clicked
 const playerRock = document.querySelector('.rock');
 const playerPaper = document.querySelector('.paper');
 const playerScissors = document.querySelector('.scissors');
 
+//Set EventListeners for the player's 3 options (rock, paper,scissors)
+playerRock.addEventListener('click', playGame);
+playerPaper.addEventListener('click', playGame);
+playerScissors.addEventListener('click', playGame);
 
 //We create theImages array of objects that gets the src and name properties from the player's 3 options (rock, paper,scissors)
 const theImages = [{
@@ -41,13 +43,6 @@ const theImages = [{
 }];
 
 
-
-//Set EventListeners for the player's 3 options (rock, paper,scissors)
-playerRock.addEventListener('click', playGame);
-playerPaper.addEventListener('click', playGame);
-playerScissors.addEventListener('click', playGame);
-
-
 // playGame function - game logic
 function playGame() {
     resetPlayerResults();
@@ -56,91 +51,17 @@ function playGame() {
 
     displayPendingPcResults(); 
 
-    resetScoreMessage();
+
 
     const randomNumber = Math.floor(Math.random()*3);//Generate a random number between 0-2
     const pcChoice = calculatePcChoice(randomNumber);
 
-    // calculateWinner function
-    // 1. checks who won
-    // 2. set the text to: draw/loose/win
-    // 3. set a variable to: undefined/true/false to use to create winner effect
-    const whoWins = calculateWinner(this.dataset.name, pcChoice); 
+    // didPcWon gets a true/false/undefined value from calculateWinner().
+    const didPcWon = calculateWinner(this.dataset.name, pcChoice); // calculateWinner function: 1. checks who won, 2. set the text to: draw/loose/win, 3. set a variable to: undefined/true/false to use to create winner effect
     
     // Display score, pc image, message (draw, win, loose), and in case of winner the background
-    displayResults(whoWins,randomNumber);
+    displayResults(didPcWon,randomNumber);
 }
-
-function calculateWinner(player, pc){
-    let pcWins;
-
-    if (player === pc){
-        text = "IT'S A DRAW";
-        pcWins = undefined;
-    } else if ((player === "rock" && pc === "paper") || (player === "scissors" && pc === "rock") || (player === "paper" && pc === "scissors")) {
-        text = "YOU LOOSE";
-        pcWins = true;
-    } else {
-        text = "YOU WIN";
-        pcWins = false;
-        calculateScore = calculateScore + 1;
-    }
-
-    return pcWins;
-}
-
-function displayResults(whoWins, randomNumber){
-    let winner = whoWins;
-    let num = randomNumber;
-
-    setTimeout(function(){
-        displayPcResults(num);
-
-        score.innerHTML = calculateScore;
-        message.innerHTML = text;
-
-        displayWinnerEffect(winner);
-        },200);
-
-    selectContainer.style.display = "none";
-}
-
-function displayPcResults(num) {
-    resultPcImage.src = theImages[num].src;
-    resultPcImage.style.visibility = "visible";
-    resultPcDiv.style.background = "white"; //set color to white
-    resultPcDiv.classList.remove('gray-style');
-
-    if(theImages[num].name == "rock"){
-        resultPcDiv.classList.add("rock-style");
-    } else if (theImages[num].name == "paper") {
-        resultPcDiv.classList.add("paper-style");
-    } else if (theImages[num].name == "scissors"){
-        resultPcDiv.classList.add("scissors-style");
-    }
-}
-
-
-function displayWinnerEffect(a) {
-    if (a == true){
-        //resultPcDiv.classList.add("winner-animation");
-        console.log ("pc wins - a is true");
-    } else if (a == false){
-        //resultPlayerDiv.classList.add("winner-animation");
-        console.log ("player wins - a is false");
-    } else if (a == undefined){
-        console.log ("draw - a is undefined");
-    }
-}
-
-
-
-
-function calculatePcChoice(randomNum) {
-    let image = theImages[randomNum].name; //Get the name of the pc's choice based on the random number we have calculated
-    return image;
-}
-
 
 function resetPlayerResults() {
     resultPlayerDiv.style.border = ""; //Remove inline style - Player's choice
@@ -148,6 +69,7 @@ function resetPlayerResults() {
     resultPlayerDiv.classList.remove("rock-style");
     resultPlayerDiv.classList.remove("paper-style");
     resultPlayerDiv.classList.remove("scissors-style");
+    resultPlayerDiv.classList.remove("win");
 }
 
 function setPlayerStyle(a,b) {
@@ -172,23 +94,87 @@ function displayPendingPcResults() {
     resultPcDiv.style.border = ""; //remove inline style
     resultPcDiv.style.boxShadow = ""; //remove inline style
     resultPcDiv.classList.add('gray-style'); //set it to gray
-
 }
 
-function resetScoreMessage() {
-    message.innerHTML = ""; //we clear the message
+function calculatePcChoice(randomNum) {
+    let image = theImages[randomNum].name; //Get the name of the pc's choice based on the random number we have calculated
+    return image;
 }
 
+function calculateWinner(player, pc){
+    let pcWins;
+
+    if (player === pc){
+        text = "IT'S A DRAW";
+        pcWins = undefined;
+    } else if ((player === "rock" && pc === "paper") || (player === "scissors" && pc === "rock") || (player === "paper" && pc === "scissors")) {
+        text = "YOU LOOSE";
+        pcWins = true;
+    } else {
+        text = "YOU WIN";
+        pcWins = false;
+        calculateScore = calculateScore + 1;
+    }
+
+    return pcWins;
+}
+
+
+function displayResults(didPcWon, randomNumber){
+    setTimeout(function(){
+        displayPcResults(randomNumber);
+
+        score.innerHTML = calculateScore;
+        message.innerHTML = text;
+
+        displayWinnerEffect(didPcWon);
+        },500);
+
+    selectContainer.style.display = "none";
+}
+
+function displayPcResults(randomNumber) {
+    resultPcImage.src = theImages[randomNumber].src;
+    resultPcImage.style.visibility = "visible";
+    resultPcDiv.style.background = "white";
+    resultPcDiv.classList.remove('gray-style');
+
+    if(theImages[randomNumber].name == "rock"){
+        resultPcDiv.classList.add("rock-style");
+    } else if (theImages[randomNumber].name == "paper") {
+        resultPcDiv.classList.add("paper-style");
+    } else if (theImages[randomNumber].name == "scissors"){
+        resultPcDiv.classList.add("scissors-style");
+    }
+}
+
+function displayWinnerEffect(didPcWon) {
+    if (didPcWon == true){
+        resultPcDiv.classList.add("win");
+    } else if (didPcWon == false){
+        resultPlayerDiv.classList.add("win");
+    } else if (didPcWon == undefined){
+    }
+}
 
 
 function playAgain() {
     // Remove all the styles - PC choice
-    resultPcDiv.classList.remove('gray-style');
-    resultPcDiv.classList.remove("rock-style");
-    resultPcDiv.classList.remove("paper-style");
-    resultPcDiv.classList.remove("scissors-style");
+    resetPcResults();
+    resetScoreMessage();
 
     resultContainer.style.display = "none"; //we remove the div with the results of the previous match
     selectContainer.style.display = "grid"; //we go back to the div with the game
 }
 
+function resetPcResults() {
+    resultPcDiv.classList.remove('gray-style');
+    resultPcDiv.classList.remove("rock-style");
+    resultPcDiv.classList.remove("paper-style");
+    resultPcDiv.classList.remove("scissors-style");
+    resultPcDiv.classList.remove("win");
+}
+
+function resetScoreMessage() {
+    message.innerHTML = ""; //we clear the message
+}
