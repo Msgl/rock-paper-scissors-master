@@ -7,11 +7,18 @@ body {
     background: radial-gradient(ellipse at center, $radial-gradient-light, $radial-gradient-dark);
     font-family: $main-font;
     height: 100vh;
+    box-sizing: border-box;
 }
 
 button:hover {
     color: $hover-btn;
     cursor: pointer;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100vh;
+    padding-top: 50px;
 }
 
 .header {
@@ -21,7 +28,7 @@ button:hover {
     font-weight: $bold-weight;
     height: 140px;
     justify-content: space-between;
-    margin: 50px auto;
+    margin: 0 auto;
     padding: 15px;
     width: 750px;
 
@@ -231,7 +238,6 @@ button:hover {
             text-transform: none;
         }
     }
-
 }
 
 .active {
@@ -321,5 +327,109 @@ button:hover {
     .rules {
         justify-content: center;
         padding-right: 0;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .wrapper{
+        padding-top: 20px;
+    }
+    .header {
+        height: max-content;
+        width: 80%;
+
+        &__text {
+            font-size: 1.4em;
+            line-height: 100%;
+        }
+
+        &__score {
+            width: 100px;
+            padding-top: 0;
+        }
+    }
+
+    .select, .result {
+        margin-top: 15px;
+        height: 150px;
+    }
+
+    .select {
+        background-position: center top 70px;
+        background-size: 40%;
+        grid-template-columns: repeat(2, 170px);
+        grid-template-rows: repeat(2, 120px);
+        width: 100%;
+
+        &__rock, &__scissors, &__paper{
+            > img {
+            margin: 10px;
+            width: 40px;
+            }
+        }
+    }
+
+    .result {
+        grid-template-columns: repeat(2, 170px);
+        grid-template-rows: repeat(2, 120px);
+        grid-template-areas:
+            "player pc"
+            "box box";
+
+        &__player, &__pc {
+            height: auto;
+            padding-top: 10px;
+            > img {
+                margin: 10px;
+                width: 40px;
+                }
+        }
+
+        &__player::before, &__pc::before {
+            top:120px;
+            font-size: 1.1em;
+        }
+
+        &__player::before {
+            content: "YOU PICKED";
+            left: -10px;
+        }
+
+        &__pc::before {
+            content: "THE HOUSE PICKED";
+            left: -40px;
+        }
+
+        &__box {
+            padding-top: 80px;
+            &__btn {
+                border-radius: 10px;
+                border: 1px solid $white;
+                font-family: $main-font;
+                font-size: 1.0em;
+                letter-spacing: .2em;
+                padding: 10px;
+                text-transform: uppercase;
+                width: 200px;
+            }
+
+            > p {
+                font-size: 2em;
+                margin: 0;
+                text-align: center;
+            }
+        }
+
+        &__message {
+            height: 50px;
+        }
+    }
+    .rules {
+        padding-top: 30px;
+    }
+
+    .box__rules {
+        top: -80%;
     }
 }

@@ -157,7 +157,6 @@ function displayWinnerEffect(didPcWon) {
     }
 }
 
-
 function playAgain() {
     // Remove all the styles - PC choice
     resetPcResults();

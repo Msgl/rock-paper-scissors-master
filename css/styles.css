@@ -9,11 +9,17 @@ body {
   background: #1f3756;
   background: radial-gradient(ellipse at center, #1f3756, #141539);
   font-family: "Barlow Semi Condensed", sans-serif;
-  height: 100vh; }
+  height: 100vh;
+  box-sizing: border-box; }
 
 button:hover {
   color: #bf1232;
   cursor: pointer; }
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  padding-top: 50px; }
 
 .header {
   border-radius: 10px;
@@ -22,7 +28,7 @@ button:hover {
   font-weight: 600;
   height: 140px;
   justify-content: space-between;
-  margin: 50px auto;
+  margin: 0 auto;
   padding: 15px;
   width: 750px; }
   .header__text {
@@ -240,3 +246,68 @@ button:hover {
   .rules {
     justify-content: center;
     padding-right: 0; } }
+
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    padding-top: 20px; }
+  .header {
+    height: max-content;
+    width: 80%; }
+    .header__text {
+      font-size: 1.4em;
+      line-height: 100%; }
+    .header__score {
+      width: 100px;
+      padding-top: 0; }
+  .select, .result {
+    margin-top: 15px;
+    height: 150px; }
+  .select {
+    background-position: center top 70px;
+    background-size: 40%;
+    grid-template-columns: repeat(2, 170px);
+    grid-template-rows: repeat(2, 120px);
+    width: 100%; }
+    .select__rock > img, .select__scissors > img, .select__paper > img {
+      margin: 10px;
+      width: 40px; }
+  .result {
+    grid-template-columns: repeat(2, 170px);
+    grid-template-rows: repeat(2, 120px);
+    grid-template-areas: "player pc" "box box"; }
+    .result__player, .result__pc {
+      height: auto;
+      padding-top: 10px; }
+      .result__player > img, .result__pc > img {
+        margin: 10px;
+        width: 40px; }
+    .result__player::before, .result__pc::before {
+      top: 120px;
+      font-size: 1.1em; }
+    .result__player::before {
+      content: "YOU PICKED";
+      left: -10px; }
+    .result__pc::before {
+      content: "THE HOUSE PICKED";
+      left: -40px; }
+    .result__box {
+      padding-top: 80px; }
+      .result__box__btn {
+        border-radius: 10px;
+        border: 1px solid white;
+        font-family: "Barlow Semi Condensed", sans-serif;
+        font-size: 1.0em;
+        letter-spacing: .2em;
+        padding: 10px;
+        text-transform: uppercase;
+        width: 200px; }
+      .result__box > p {
+        font-size: 2em;
+        margin: 0;
+        text-align: center; }
+    .result__message {
+      height: 50px; }
+  .rules {
+    padding-top: 30px; }
+  .box__rules {
+    top: -80%; } }
