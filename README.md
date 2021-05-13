@@ -1,4 +1,4 @@
-# Frontend Mentor - Easybank landing page solution
+# Frontend Mentor - Rock, Paper, Scissors Game
 
 This is a solution to the [Design preview for the Rock, Paper, Scissors coding challenge](./design/desktop-preview.jpg).
 
