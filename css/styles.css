@@ -13,7 +13,7 @@ body {
   box-sizing: border-box; }
 
 button:hover {
-  color: #bf1232;
+  color: rgba(238, 79, 108, 0.781);
   cursor: pointer; }
 
 .wrapper {
