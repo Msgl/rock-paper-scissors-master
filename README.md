@@ -29,7 +29,9 @@ If the player wins, they gain 1 point. If the computer wins, the player loses on
 
 ### Screenshots
 
-![readme-screenshots]()
+![rock-paper-scissors](https://user-images.githubusercontent.com/11541430/118118096-212eb280-b3f5-11eb-8b0d-7534ea1802ce.png)
+
+
 
 ### Links
 
